@@ -1,14 +1,11 @@
 #!/bin/bash
 
 # unattended postfix install
-debconf-set-selections <<< "postfix postfix/mailname string your.domain.com"
-debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
 sudo yum install -y postfix
 sudo yum install -y mailutils
 
 # set config to send-only and from localhost
 echo '
-smtpd_banner = $myhostname ESMTP $mail_name (Ubuntu)
 biff = no
 append_dot_mydomain = no
 readme_directory = no
